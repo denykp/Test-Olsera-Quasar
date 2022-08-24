@@ -2,35 +2,25 @@
 
 A Quasar Project
 
+### Detail Project
+```bash
+* Project ini discaffold dengan Quasar CLI, sehingga untuk menjalankannya harus menggunakan Quasar CLI (https://quasar.dev/start/quasar-cli)
+* Untuk membaca Post, klik pada Title dari post.
+```
+
+
 ## Install the dependencies
 ```bash
 yarn
 # or
 npm install
+npm i -g @quasar/cli (jika belum ada)
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
 quasar dev
 ```
-
-
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
 
 ### Build the app for production
 ```bash
