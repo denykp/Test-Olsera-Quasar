@@ -108,7 +108,7 @@ async function save() {
       });
       $q.notify({
         message: "Data berhasil disimpan",
-        position: "center-right",
+        position: "right",
         color: "primary",
       });
       loadingSave.value = false;
@@ -119,7 +119,7 @@ async function save() {
     loadingSave.value = false;
     $q.notify({
       message: "Oops... Something went wrong...",
-      position: "center-right",
+      position: "right",
       color: "red",
     });
   }

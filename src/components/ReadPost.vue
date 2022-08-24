@@ -1,58 +1,62 @@
 <template>
   <q-card class="modal-dialog">
-    <div class="close-icon">
+    <div class="close-icon bg-white">
       <q-btn icon="close" flat round dense v-close-popup />
     </div>
-    <q-card>
-      <q-card-section>
-        <transition
-          appear
-          enter-active-class="animated fadeIn"
-          leave-active-class="animated fadeOut"
-        >
-          <div>
-            <div class="title">{{ postData.title }}</div>
-            <div class="body">{{ postData.body }}</div>
-          </div>
-        </transition>
-      </q-card-section>
-      <q-inner-loading
-        :showing="loadingPost"
-        label="Please wait..."
-        label-style="font-size: 1.1em"
-      />
-    </q-card>
-    <q-card>
-      <q-card-section>
-        <transition
-          appear
-          enter-active-class="animated fadeIn"
-          leave-active-class="animated fadeOut"
-        >
-          <div>
+    <div style="border: 1px solid gray">
+      <q-card>
+        <q-card-section>
+          <transition
+            appear
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
+          >
             <div>
-              <span style="font-weight: bold; font-size: 18px">Comments:</span>
-              <div
-                v-for="(item, index) in listComment"
-                :key="index"
-                style="padding: 10px 10px 0 10px"
-              >
-                <hr />
-                <div class="comment-header">
-                  {{ item.name }}&nbsp;({{ item.email }})
+              <div class="title">{{ postData.title }}</div>
+              <div class="body">{{ postData.body }}</div>
+            </div>
+          </transition>
+        </q-card-section>
+        <q-inner-loading
+          :showing="loadingPost"
+          label="Please wait..."
+          label-style="font-size: 1.1em"
+        />
+      </q-card>
+      <q-card>
+        <q-card-section>
+          <transition
+            appear
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
+          >
+            <div>
+              <div>
+                <span style="font-weight: bold; font-size: 18px"
+                  >Comments:</span
+                >
+                <div
+                  v-for="(item, index) in listComment"
+                  :key="index"
+                  style="padding: 10px 10px 0 10px"
+                >
+                  <hr />
+                  <div class="comment-header">
+                    {{ item.name }}&nbsp;({{ item.email }})
+                  </div>
+                  <div style="font-size: 12px">{{ item.body }}</div>
                 </div>
-                <div>{{ item.body }}</div>
               </div>
             </div>
-          </div>
-        </transition>
-      </q-card-section>
-      <q-inner-loading
-        :showing="loadingComment"
-        label="Loading comments..."
-        label-style="font-size: 1.1em"
-      />
-    </q-card>
+          </transition>
+        </q-card-section>
+        <q-inner-loading
+          :showing="loadingComment"
+          label="Loading comments..."
+          label-style="font-size: 1.1em"
+        />
+      </q-card>
+    </div>
   </q-card>
 </template>
 
@@ -122,8 +126,8 @@ async function loadComment() {
 }
 .close-icon {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 5px;
   z-index: 10;
 }
 </style>

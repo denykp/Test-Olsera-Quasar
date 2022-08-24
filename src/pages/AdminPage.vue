@@ -183,7 +183,7 @@ async function deletePost() {
     await api.delete(`/posts/${state.deletePost}`);
     $q.notify({
       message: "Data berhasil dihapus",
-      position: "center-right",
+      position: "right",
       color: "primary",
     });
     loadingDelete.value = false;
@@ -193,7 +193,7 @@ async function deletePost() {
     console.log(error);
     $q.notify({
       message: "Oops... Something went wrong...",
-      position: "center-right",
+      position: "right",
       color: "red",
     });
   }

@@ -5,15 +5,17 @@
         <q-input
           ref="idRef"
           v-model="formField.id"
-          label="Id"
+          label="User Id"
           :rules="[(val) => !!val || 'Field is required']"
+          @keypress="numbersOnly"
         />
         <q-input
           ref="emailRef"
           v-model="formField.email"
           label="Email"
           style="margin-top: 20px"
-          :rules="[(val) => !!val || 'Field is required']"
+          :rules="[(val) => !!val || 'Field is required', isValidEmail]"
+          type="email"
         />
       </div>
       <div class="text-red">{{ errorMessage }}</div>
@@ -69,13 +71,16 @@ async function login() {
           loadingLogin.value = false;
           router.push("/admin");
         } else {
-          errorMessage.value = "Invalid Email";
+          errorMessage.value = "Invalid email";
         }
+      } else {
+        errorMessage.value = "Id not found";
       }
     }
     loadingLogin.value = false;
   } catch (error) {
     console.log(error);
+    errorMessage.value = "Id not found";
     loadingLogin.value = false;
   }
 }
@@ -83,6 +88,16 @@ async function login() {
 function close() {
   emit("cancel");
   router.push("/");
+}
+
+function isValidEmail(val) {
+  const emailPattern =
+    /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
+  return emailPattern.test(val) || "Invalid email";
+}
+
+function numbersOnly(evt) {
+  return !/\d/g.test(evt.key) ? evt.preventDefault() : true;
 }
 </script>
 
