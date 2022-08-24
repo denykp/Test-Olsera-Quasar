@@ -1,0 +1,10 @@
+// app global css in SCSS form
+@font-face {
+  font-family: customfont;
+  src: url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+}
+
+// declare a class which applies it
+.default-font {
+  font-family: "Nunito", sans-serif;
+}
